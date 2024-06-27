@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ResultsViewModel: ObservableObject {
+final class ResultsViewModel: ObservableObject {
   
   // MARK: - Public (Properties)
   var games: [Game] = []

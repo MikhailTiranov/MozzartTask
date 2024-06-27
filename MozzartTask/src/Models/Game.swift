@@ -17,6 +17,7 @@ struct Game: Codable {
   let status: Status
   let winningNumbers: WinningNumbers?
   
+  // MARK: - Codable
   enum CodingKeys: String, CodingKey {
     case gameID = "gameId"
     case drawID = "drawId"
@@ -28,6 +29,8 @@ struct Game: Codable {
 
 // MARK: - PrizeCategory
 struct WinningNumbers: Codable {
+  
+  // MARK: - Public (Properties)
   let list: [Int]
 }
 

@@ -11,13 +11,13 @@ struct WebPage: View {
 
   // MARK: - Private (Properties)
   private let webView = WebView()
-  private let urlString = "https://www.mozzartbet.com/sr/lotto-animation/26#/"
+  private let url = Links.webPage
   
   // MARK: - View
   var body: some View {
     webView
       .onAppear {
-        webView.loadURL(urlString: urlString)
+        webView.loadURL(url: url)
       }
       .toolbarColorScheme(.dark, for: .navigationBar)
       .toolbarBackground(.visible, for: .navigationBar)

@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class GameViewModel: ObservableObject {
+final class GameViewModel: ObservableObject {
   
   // MARK: - Public (Properties)
   let game: Game

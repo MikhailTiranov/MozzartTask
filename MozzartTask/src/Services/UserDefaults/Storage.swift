@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Storage {
+final class Storage {
   
   // MARK: - Public (Properties)
   static let shared = Storage()

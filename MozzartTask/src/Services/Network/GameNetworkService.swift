@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GameNetworkService: NetworkService {
+final class GameNetworkService: NetworkService {
   
   // MARK: - Public (Interface)
   func loadResults(fromDate: Date, toDate: Date) async throws -> [Game] {
@@ -17,8 +17,12 @@ class GameNetworkService: NetworkService {
           [Game].self,
           from: try sendRequest(for: .loadResults(fromDate: fromDate, toDate: toDate))
         )
-    } catch {
-      throw RequestError.wrongModel
+    } catch let error {
+      if error is DecodingError {
+        throw RequestError.wrongModel
+      } else {
+        throw error
+      }
     }
   }
   
@@ -29,8 +33,12 @@ class GameNetworkService: NetworkService {
           [Game].self,
           from: try sendRequest(for: .loadRounds())
         )
-    } catch {
-      throw RequestError.wrongModel
+    } catch let error {
+      if error is DecodingError {
+        throw RequestError.wrongModel
+      } else {
+        throw error
+      }
     }
   }
   
@@ -41,8 +49,12 @@ class GameNetworkService: NetworkService {
           Game.self,
           from: try sendRequest(for: .loadGame(drawID: drawID))
         )
-    } catch {
-      throw RequestError.wrongModel
+    } catch let error {
+      if error is DecodingError {
+        throw RequestError.wrongModel
+      } else {
+        throw error
+      }
     }
   }
 }

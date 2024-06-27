@@ -98,8 +98,8 @@ struct ResultsView: View {
     for numbers: [Int]
   ) -> some View {
     LazyVGrid(columns: columns, spacing: 3.0) {
-      ForEach(numbers, id: \.self.description) { item in
-        makeCell(with: item)
+      ForEach(numbers, id: \.description) {
+        makeCell(with: $0)
       }
     }
   }

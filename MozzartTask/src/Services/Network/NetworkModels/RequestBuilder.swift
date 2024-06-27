@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RequestBuilder<EndPoint: RestEndPointType> {
+final class RequestBuilder<EndPoint: RestEndPointType> {
   
   // MARK: - Public (Interface)
   func buildRequest(from endpoint: EndPoint) throws -> URLRequest {

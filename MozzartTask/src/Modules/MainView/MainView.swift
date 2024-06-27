@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainView: View {
   
+  // MARK: - Public (Properties)
   @ObservedObject var viewModel: MainViewModel
   
   // MARK: - View

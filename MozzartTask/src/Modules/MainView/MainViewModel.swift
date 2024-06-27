@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
   
   // MARK: - Public (Properties)
   let gameService: GameNetworkService
@@ -37,6 +37,7 @@ class MainViewModel: ObservableObject {
     updateTimers()
   }
   
+  // MARK: - Public (Interface)
   func loadGames() {
     if !isDownloading {
       Task {
@@ -49,6 +50,7 @@ class MainViewModel: ObservableObject {
           (error as? RequestError)?.description
           ?? error.localizedDescription
           isError = true
+          isDownloading = false
         }
       }
     }

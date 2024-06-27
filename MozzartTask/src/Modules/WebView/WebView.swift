@@ -28,7 +28,7 @@ struct WebView: UIViewRepresentable {
   func updateUIView(_ uiView: WKWebView, context: Context) { }
   
   // MARK: - Public (Interface)
-  func loadURL(urlString: String) {
-    webView.load(URLRequest(url: URL(string: urlString)!))
+  func loadURL(url: URL) {
+    webView.load(URLRequest(url: url))
   }
 }

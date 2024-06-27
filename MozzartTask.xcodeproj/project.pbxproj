@@ -31,6 +31,7 @@
 		706AA7372C2D77AD00FFFC1A /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AA7362C2D77AD00FFFC1A /* ResultsView.swift */; };
 		706AA7392C2D77D000FFFC1A /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AA7382C2D77D000FFFC1A /* ResultsViewModel.swift */; };
 		706AA73C2C2D8A4300FFFC1A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AA73B2C2D8A4300FFFC1A /* Storage.swift */; };
+		706AA7412C2DE78300FFFC1A /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706AA7402C2DE78300FFFC1A /* Links.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		706AA7362C2D77AD00FFFC1A /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		706AA7382C2D77D000FFFC1A /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
 		706AA73B2C2D8A4300FFFC1A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		706AA7402C2DE78300FFFC1A /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 		706AA73D2C2DE3A600FFFC1A /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				706AA73F2C2DE77800FFFC1A /* Links */,
 				706AA6FB2C2958CA00FFFC1A /* Preview Content */,
 				706AA6F92C2958CA00FFFC1A /* Assets.xcassets */,
 			);
@@ -255,6 +258,14 @@
 				706AA7352C2CA7C100FFFC1A /* Info.plist */,
 			);
 			path = config;
+			sourceTree = "<group>";
+		};
+		706AA73F2C2DE77800FFFC1A /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				706AA7402C2DE78300FFFC1A /* Links.swift */,
+			);
+			path = Links;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +346,7 @@
 				706AA72E2C2B167D00FFFC1A /* GameViewModel.swift in Sources */,
 				706AA72F2C2B168100FFFC1A /* GameView.swift in Sources */,
 				706AA7232C29D28400FFFC1A /* Game.swift in Sources */,
+				706AA7412C2DE78300FFFC1A /* Links.swift in Sources */,
 				706AA71A2C29B19B00FFFC1A /* URLComponents+Extension.swift in Sources */,
 				706AA7132C29B18500FFFC1A /* JSONParameterEncoder.swift in Sources */,
 				706AA7122C29B18500FFFC1A /* Router.swift in Sources */,

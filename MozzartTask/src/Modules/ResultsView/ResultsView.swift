@@ -23,7 +23,7 @@ struct ResultsView: View {
     ZStack {
       if viewModel.isLoading {
         ProgressView()
-          .progressViewStyle(CircularProgressViewStyle(tint: .blue))        
+          .progressViewStyle(CircularProgressViewStyle(tint: .primary))
       }
       
       ScrollView {
@@ -61,7 +61,7 @@ struct ResultsView: View {
         Button(action: viewModel.loadGames) {
           Image(systemName: "goforward")
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(Color.primaryText)
         .disabled(viewModel.games.isEmpty)
       }
     }
@@ -69,7 +69,7 @@ struct ResultsView: View {
     .toolbarColorScheme(.dark, for: .navigationBar)
     .toolbarBackground(.visible, for: .navigationBar)
     .padding(.horizontal, 10.0)
-    .background(Color.black)
+    .background(Color.background)
   }
   
   // MARK: - Private (Interface)
@@ -89,8 +89,8 @@ struct ResultsView: View {
   
   private func configureCellColor(for status: Status) -> Color {
     switch status {
-    case .active, .future: .yellow
-    case .results: .green
+    case .active, .future: .primary
+    case .results: .secondary
     }
   }
   
@@ -105,20 +105,7 @@ struct ResultsView: View {
   }
   
   private func configureColor(for value: Int) -> Color {
-    let colors: [Color] = [
-      .yellow,
-      .orange,
-      .red,
-      .pink,
-      .purple,
-      .cyan,
-      .green,
-      .blue,
-      .mint,
-      .indigo
-    ]
-    
-    return colors[(value - 1)/8]
+    Color.mixedColors[(value - 1)/8]
   }
   
   private func makeCell(with value: Int) -> some View {
@@ -130,7 +117,7 @@ struct ResultsView: View {
       .aspectRatio(1.0, contentMode: .fill)
       .background(
         RoundedRectangle(cornerRadius: 25.0)
-          .fill(Color.black)
+          .fill(Color.background)
           .stroke(
             configureColor(for: value),
             lineWidth: 2.0

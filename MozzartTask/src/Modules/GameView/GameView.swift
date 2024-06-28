@@ -55,9 +55,9 @@ struct GameView: View {
                   bottomTrailing: 30.0
                 )
               )
-              .fill(Color.yellow.opacity(0.9))
+              .fill(Color.secondaryBackground)
             )
-            .foregroundStyle(Color.black.opacity(0.8))
+            .foregroundStyle(Color.darkText)
             .padding(.leading, 30.0)
           
           Spacer()
@@ -65,7 +65,7 @@ struct GameView: View {
           Text("Chosen Numbers: \(viewModel.chosenNumbersCount)/15")
             .font(.caption)
             .padding(.horizontal)
-            .foregroundStyle(Color.black.opacity(0.8))
+            .foregroundStyle(Color.darkText)
         }
 
         ScrollView(.horizontal, showsIndicators: false) {
@@ -84,10 +84,10 @@ struct GameView: View {
             topTrailing: 30.0
           )
         )
-        .fill(Color.yellow.opacity(0.9))
+        .fill(Color.secondaryBackground)
         .ignoresSafeArea(edges: .bottom)
       )
-      .foregroundStyle(Color.white)
+      .foregroundStyle(Color.primaryText)
     }
     .disabled(viewModel.isBetMade)
     .toolbar {
@@ -103,7 +103,7 @@ struct GameView: View {
     .toolbarBackground(.visible, for: .navigationBar)
     .navigationTitle(congigureTitle(for: viewModel.game))
     .navigationBarTitleDisplayMode(.inline)
-    .background(Color.black.opacity(0.9))
+    .background(Color.vagueBackground)
     .ignoresSafeArea(edges: .bottom)
   }
   
@@ -122,33 +122,20 @@ struct GameView: View {
       .aspectRatio(1.0, contentMode: .fill)
       .background(
         RoundedRectangle(cornerRadius: 25.0)
-          .fill(Color.black)
+          .fill(Color.background)
           .stroke(
             viewModel.isNumberChosen(value)
             ? configureColor(for: value)
-            : .gray,
+            : .borderColor,
             lineWidth: 2.0
           )
       )
-      .foregroundStyle(.white.opacity(0.8))
+      .foregroundStyle(Color.secondaryText)
       .onTapGesture { viewModel.handleTapOnNumber(value) }
   }
   
   private func configureColor(for value: Int) -> Color {
-    let colors: [Color] = [
-      .yellow,
-      .orange,
-      .red,
-      .pink,
-      .purple,
-      .cyan,
-      .green,
-      .blue,
-      .mint,
-      .indigo
-    ]
-    
-    return colors[(value - 1)/8]
+    Color.mixedColors[(value - 1)/8]
   }
   
   private func makeOddCell(with key: Int, value: Double) -> some View {
@@ -156,7 +143,7 @@ struct GameView: View {
       Text(key, format: .number)
         .font(.headline)
       Divider()
-        .background(Color.gray)
+        .background(Color.borderColor)
       Text(value, format: .number)
         .font(.headline)
     }

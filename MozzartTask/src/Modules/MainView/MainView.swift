@@ -27,7 +27,7 @@ struct MainView: View {
               .toolbarRole(.editor)
           ) {
             Text("Results")
-              .foregroundStyle(.yellow)
+              .foregroundStyle(Color.primary)
           }
           Spacer()
           
@@ -42,7 +42,7 @@ struct MainView: View {
               .toolbarRole(.editor)
           ) {
             Text("Bets")
-              .foregroundStyle(.yellow)
+              .foregroundStyle(Color.primary)
           }
         }
 
@@ -59,7 +59,7 @@ struct MainView: View {
         .padding(.horizontal, 20.0)
         .background(
           Capsule()
-            .fill(Color.yellow.opacity(0.8))
+            .fill(Color.cellBackground)
         )
         .padding(.vertical, 10.0)
         
@@ -91,13 +91,13 @@ struct MainView: View {
                   
                   Text(time <= .zero ? "00:00" : time.positionalTime)
                     .font(.subheadline)
-                    .foregroundStyle(time < 60.0 ? .red : .white)
+                    .foregroundStyle(time < 60.0 ? Color.warningColor : Color.primaryText)
                 }
                 .frame(height: 40.0)
               }
               
               Divider()
-                .background(.yellow)
+                .background(Color.primary)
             }
           }
           .padding(.horizontal, 20.0)
@@ -106,8 +106,8 @@ struct MainView: View {
         Spacer()
       }
       .padding([.horizontal, .top])
-      .foregroundStyle(.white)
-      .background(Color.black.opacity(0.9))
+      .foregroundStyle(Color.primaryText)
+      .background(Color.vagueBackground)
       .ignoresSafeArea(edges: .bottom)
       .alert(
         viewModel.errorMessage,

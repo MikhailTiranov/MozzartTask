@@ -1,5 +1,5 @@
 //
-//  Image.swift
+//  Image+Extension.swift
 //  MozzartTask
 //
 //  Created by Mihail Tiranov on 28.6.24..

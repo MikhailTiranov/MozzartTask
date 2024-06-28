@@ -94,7 +94,11 @@ struct GameView: View {
     .toolbar {
       ToolbarItem(placement: .topBarTrailing) {
         Button("Bet") { viewModel.makeBet() }
-        .foregroundStyle(viewModel.isBetMade ? .red : .white)
+        .foregroundStyle(
+          viewModel.isBetMade
+          ? Color.warningColor
+          : viewModel.isBetButtonDisabled ? .darkText : .primaryText
+        )
         .disabled(viewModel.isBetButtonDisabled)
       }
     }

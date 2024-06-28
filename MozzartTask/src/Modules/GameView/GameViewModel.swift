@@ -11,9 +11,7 @@ import Combine
 final class GameViewModel: ObservableObject {
   
   // MARK: - Public (Properties)
-  let game: Game
-  @Published var current = Date().timeIntervalSince1970
-  
+  let game: Game  
   var chosenNumbersCount: Int { chosenNumbers.count }
   
   @Published var isBetMade = false

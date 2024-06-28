@@ -12,6 +12,7 @@ struct GameView: View {
   // MARK: - Public (Properties)
   @StateObject var viewModel: GameViewModel
   @Environment(\.presentationMode) var presentationMode
+  @Binding var time: TimeInterval
   
   // MARK: - Private (Properties)
   private let data = Array(1...80)
@@ -62,11 +63,22 @@ struct GameView: View {
             .padding(.leading, 30.0)
           
           Spacer()
+          
+          let time = (
+            viewModel.game.drawTime - time
+          ).timeIntervalSince1970
+          
+          Text(time <= .zero ? "00:00" : time.positionalTime)
+            .font(.headline)
+            .foregroundStyle(time <= .zero ? Color.warningColor : Color.darkText)
+          
+          Spacer()
 
-          Text("Chosen Numbers: \(viewModel.chosenNumbersCount)/15")
-            .font(.caption)
+          Text("Numbers: \(viewModel.chosenNumbersCount)/15")
+            .font(.headline)
             .padding(.horizontal)
             .foregroundStyle(Color.darkText)
+            .frame(width: 150.0)
         }
 
         ScrollView(.horizontal, showsIndicators: false) {
@@ -178,7 +190,8 @@ struct GameView: View {
       viewModel: GameViewModel(
         game: .mock,
         gameService: GameNetworkService()
-      )
+      ), 
+      time: .constant(Date().timeIntervalSince1970)
     )
   }
 }

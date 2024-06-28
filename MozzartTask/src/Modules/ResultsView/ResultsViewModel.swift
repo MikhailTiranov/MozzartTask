@@ -16,6 +16,8 @@ final class ResultsViewModel: ObservableObject {
   
   @Published var isError: Bool = false
   var errorMessage = ""
+  
+  var loadingButtonsIsDisabled: Bool { playedGames.isEmpty }
 
   // MARK: - Private (Properties)
   private let gameService: GameNetworkService

@@ -78,7 +78,8 @@ struct MainView: View {
                       viewModel: GameViewModel(
                         game: game,
                         gameService: viewModel.gameService
-                      )
+                      ), 
+                      time: $viewModel.current
                     )
                     .toolbarRole(.editor)
                 ) {

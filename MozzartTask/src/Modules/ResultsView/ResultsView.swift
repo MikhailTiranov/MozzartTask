@@ -61,8 +61,12 @@ struct ResultsView: View {
         Button(action: viewModel.loadGames) {
           Image(systemName: "goforward")
         }
-        .foregroundStyle(Color.primaryText)
-        .disabled(viewModel.games.isEmpty)
+        .foregroundStyle(
+          viewModel.loadingButtonsIsDisabled
+          ? .darkText
+          : Color.primaryText
+        )
+        .disabled(viewModel.loadingButtonsIsDisabled)
       }
     }
     .navigationTitle("Results")

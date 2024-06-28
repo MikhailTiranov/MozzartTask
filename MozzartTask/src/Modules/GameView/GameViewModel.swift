@@ -17,6 +17,7 @@ final class GameViewModel: ObservableObject {
   var chosenNumbersCount: Int { chosenNumbers.count }
   
   @Published var isBetMade = false
+  @Published var messageIsPresented = false
   
   var isBetButtonDisabled: Bool {
     chosenNumbersCount == 0 || isBetMade
@@ -52,6 +53,7 @@ final class GameViewModel: ObservableObject {
     if !isBetMade && game.drawTime > Date() {
       isBetMade = true
       Storage.shared.saveBet(for: game.drawID, numbers: chosenNumbers)
+      messageIsPresented = true
     } else if game.drawTime > Date() {
       isBetMade = true
     }

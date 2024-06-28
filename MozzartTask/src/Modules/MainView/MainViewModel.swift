@@ -18,6 +18,8 @@ final class MainViewModel: ObservableObject {
   @Published var current = Date().timeIntervalSince1970
   
   @Published var isError: Bool = false
+  @Published var isLoading = true
+
   var errorMessage = ""
   
   // MARK: - Private (Properties)
@@ -33,6 +35,7 @@ final class MainViewModel: ObservableObject {
   // MARK: - Init
   init(gameService: GameNetworkService) {
     self.gameService = gameService
+    isLoading = true
     loadGames()
     updateTimers()
   }
@@ -45,6 +48,7 @@ final class MainViewModel: ObservableObject {
           isDownloading = true
           games = try await gameService.loadRounds()
           isDownloading = false
+          isLoading = false
         } catch let error {
           errorMessage =
           (error as? RequestError)?.description
@@ -74,5 +78,9 @@ final class MainViewModel: ObservableObject {
       }
     }
     cancellable.store(in: &cancellables)
+  }
+  
+  func checkBetsMade(for game: Game) -> Bool {
+    Storage.shared.loadBets()[game.drawID] != nil
   }
 }

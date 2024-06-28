@@ -11,6 +11,7 @@ struct GameView: View {
   
   // MARK: - Public (Properties)
   @StateObject var viewModel: GameViewModel
+  @Environment(\.presentationMode) var presentationMode
   
   // MARK: - Private (Properties)
   private let data = Array(1...80)
@@ -92,12 +93,16 @@ struct GameView: View {
     .disabled(viewModel.isBetMade)
     .toolbar {
       ToolbarItem(placement: .topBarTrailing) {
-        Button("Bet") {
-          viewModel.makeBet()
-        }
+        Button("Bet") { viewModel.makeBet() }
         .foregroundStyle(viewModel.isBetMade ? .red : .white)
         .disabled(viewModel.isBetButtonDisabled)
       }
+    }
+    .alert(
+      "You made the Bet!",
+      isPresented: $viewModel.messageIsPresented
+    ) {
+      Button("OK") { presentationMode.wrappedValue.dismiss() }
     }
     .toolbarColorScheme(.dark, for: .navigationBar)
     .toolbarBackground(.visible, for: .navigationBar)

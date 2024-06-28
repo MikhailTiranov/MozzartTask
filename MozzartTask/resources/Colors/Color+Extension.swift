@@ -16,8 +16,8 @@ extension Color {
   static var secondaryText: Color { .white.opacity(0.8) }
   static var darkText: Color { .black.opacity(0.8) }
   
-  static var primary: Color { .yellow }
-  static var secondary: Color { .green }
+  static var primaryYellow: Color { .yellow }
+  static var secondaryGreen: Color { .green }
   static var warningColor: Color { .red }
   static var background: Color { .black }
   static var vagueBackground: Color { .black.opacity(0.9) }

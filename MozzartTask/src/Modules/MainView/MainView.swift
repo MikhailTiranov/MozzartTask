@@ -16,9 +16,26 @@ struct MainView: View {
   var body: some View {
     NavigationView {
       ZStack {
-        if viewModel.isLoading {
+        if viewModel.isLoading && viewModel.games.isEmpty {
           ProgressView()
-            .progressViewStyle(CircularProgressViewStyle(tint: .primary))
+            .progressViewStyle(CircularProgressViewStyle(tint: .primaryYellow))
+        }
+        
+        if viewModel.games.isEmpty && !viewModel.isLoading {
+          Button(action: viewModel.loadGames) {
+            VStack {
+              Image.goforward
+                .resizable()
+                .frame(width: 100.0, height: 105.0)
+              Text(
+                  """
+                      Games are not loaded...
+                      Presss to reload
+                  """
+              )
+            }
+            .foregroundStyle(Color.primaryYellow)
+          }
         }
         
         VStack(spacing: .zero) {
@@ -33,7 +50,7 @@ struct MainView: View {
                 .toolbarRole(.editor)
             ) {
               Text("Results")
-                .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primaryYellow)
             }
             Spacer()
             
@@ -48,7 +65,7 @@ struct MainView: View {
                 .toolbarRole(.editor)
             ) {
               Text("Bets")
-                .foregroundStyle(Color.primary)
+                .foregroundStyle(Color.primaryYellow)
             }
           }
           
@@ -95,7 +112,7 @@ struct MainView: View {
                     .font(.subheadline)
                     .foregroundStyle(
                       viewModel.checkBetsMade(for: game)
-                      ? Color.secondary
+                      ? Color.secondaryGreen
                       : Color.primaryText
                     )
                     
@@ -109,7 +126,7 @@ struct MainView: View {
                 }
                 
                 Divider()
-                  .background(Color.primary)
+                  .background(Color.primaryYellow)
               }
             }
             .padding(.horizontal, 20.0)
@@ -125,9 +142,7 @@ struct MainView: View {
       .alert(
         viewModel.errorMessage,
         isPresented: $viewModel.isError
-      ) {
-        Button("OK") { viewModel.loadGames() }
-      }
+      ) { Button("OK") { } }
     }
   }
 }

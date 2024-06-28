@@ -23,7 +23,7 @@ struct ResultsView: View {
     ZStack {
       if viewModel.isLoading {
         ProgressView()
-          .progressViewStyle(CircularProgressViewStyle(tint: .primary))
+          .progressViewStyle(CircularProgressViewStyle(tint: .primaryYellow))
       }
       
       ScrollView {
@@ -59,7 +59,7 @@ struct ResultsView: View {
     .toolbar {
       ToolbarItem(placement: .topBarTrailing) {
         Button(action: viewModel.loadGames) {
-          Image(systemName: "goforward")
+          Image.goforward
         }
         .foregroundStyle(
           viewModel.loadingButtonsIsDisabled
@@ -93,8 +93,8 @@ struct ResultsView: View {
   
   private func configureCellColor(for status: Status) -> Color {
     switch status {
-    case .active, .future: .primary
-    case .results: .secondary
+    case .active, .future: .primaryYellow
+    case .results: .secondaryGreen
     }
   }
   

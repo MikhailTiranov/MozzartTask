@@ -24,7 +24,7 @@ final class Router<EndPoint: RestEndPointType> {
     }
   }
   
-  func sendRequest(for endpoint: EndPoint) async throws -> Data {
+  func sendRequest(for endpoint: EndPoint) async throws -> Data {    
     let (data, response) = try await URLSession.shared.data(
       for: makeRequest(for: endpoint)
     )

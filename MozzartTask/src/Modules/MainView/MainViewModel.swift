@@ -42,6 +42,7 @@ final class MainViewModel: ObservableObject {
   
   // MARK: - Public (Interface)
   func loadGames() {
+    isLoading = true
     if !isDownloading {
       Task {
         do {
@@ -55,6 +56,7 @@ final class MainViewModel: ObservableObject {
           ?? error.localizedDescription
           isError = true
           isDownloading = false
+          isLoading = false
         }
       }
     }

@@ -21,6 +21,7 @@ struct WebPage: View {
       }
       .toolbarColorScheme(.dark, for: .navigationBar)
       .toolbarBackground(.visible, for: .navigationBar)
+      .ignoresSafeArea()
   }
 }
 

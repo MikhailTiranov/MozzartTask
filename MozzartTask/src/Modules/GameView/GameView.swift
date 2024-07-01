@@ -69,6 +69,7 @@ struct GameView: View {
           ).timeIntervalSince1970
           
           Text(time <= .zero ? "00:00" : time.positionalTime)
+            .monospacedDigit()
             .font(.headline)
             .foregroundStyle(time <= .zero ? Color.warningColor : Color.darkText)
           

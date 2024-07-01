@@ -119,6 +119,7 @@ struct MainView: View {
                     Spacer()
                     
                     Text(time <= .zero ? "00:00" : time.positionalTime)
+                      .monospacedDigit()
                       .font(.subheadline)
                       .foregroundStyle(time < 60.0 ? Color.warningColor : Color.primaryText)
                   }
